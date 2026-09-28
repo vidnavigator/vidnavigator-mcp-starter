@@ -74,12 +74,14 @@ Show my current VidNavigator API usage
 
 ## 🔧 Available Tools
 
-- **search_videos**: Search for videos with AI analysis and ranking
-- **analyze_video**: Analyze video content and generate summaries  
-- **get_video_transcript**: Extract video transcripts
-- **answer_followup_question**: Ask questions about analyzed videos
-- **get_usage**: Check API usage and subscription limits
-- **transcribe_video**: Transcribe non-YouTube videos
+Full descriptions: [docs.vidnavigator.com/mcp-server](https://docs.vidnavigator.com/mcp-server).
+
+- **Online videos**: `search_videos`, `get_video_transcript`, `transcribe_video`, `analyze_video`, `answer_followup_question`, `extract_video_data`, `get_tweet_statement`
+- **TikTok**: `search_tiktok`, `scrape_tiktok_profile`
+- **Your files**: `list_files`, `get_file`, `analyze_file`, `search_files`, `extract_file_data`, `list_namespaces`
+- **Tasks and account**: `get_task_status`, `get_usage`
+
+Transcription, extraction, tweet analysis and the TikTok tools run as background jobs: the assistant gets a `task_id` and calls `get_task_status` until the result is ready.
 
 ## 📁 Files in this Directory
 

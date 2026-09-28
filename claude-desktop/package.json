@@ -1,7 +1,7 @@
 {
   "name": "@vidnavigator/mcp-desktop-extension",
-  "version": "1.0.0",
-  "description": "VidNavigator MCP Server for Claude Desktop Extensions",
+  "version": "2.0.0",
+  "description": "VidNavigator extension for Claude Desktop: a relay to the hosted VidNavigator MCP server",
   "type": "module",
   "main": "server/index.js",
   "bin": {

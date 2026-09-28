@@ -1,10 +1,10 @@
 {
   "dxt_version": "0.1",
   "name": "vidnavigator",
-  "display_name": "VidNavigator - AI Video Search & Analysis",
-  "version": "1.0.0",
-  "description": "AI-powered video search, analysis, and transcription for YouTube and social media videos",
-  "long_description": "VidNavigator provides advanced AI-powered capabilities for searching, analyzing, and transcribing videos from YouTube and social media platforms. Features include semantic video search with AI ranking, comprehensive video analysis with summaries and Q&A, transcript extraction, and transcription of non-YouTube videos from Instagram, TikTok, Facebook, and more. Perfect for content creators, researchers, and developers who need to understand video content at scale.",
+  "display_name": "VidNavigator - AI Video Search, Transcription & Analysis",
+  "version": "2.0.0",
+  "description": "Search, transcribe, analyze and extract data from YouTube, TikTok, Instagram, X and other online videos, and from your uploaded files",
+  "long_description": "VidNavigator gives Claude the full VidNavigator API. Search YouTube with AI ranking, get transcripts from YouTube, TikTok, X, Facebook, Vimeo and more, and transcribe videos without captions (Instagram included) of any length. Summarize videos or ask questions about them, extract structured data into the fields you define, fact-check tweets, search TikTok by keyword or scrape a TikTok profile, and search and analyze the files you uploaded to VidNavigator. The extension connects to the hosted VidNavigator MCP server, so new tools appear without reinstalling it.",
   "author": {
     "name": "VidNavigator Team",
     "email": "support@vidnavigator.com",
@@ -27,7 +27,9 @@
     "entry_point": "server/index.js",
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/server/index.js"],
+      "args": [
+        "${__dirname}/server/index.js"
+      ],
       "env": {
         "API_KEY": "${user_config.api_key}"
       }
@@ -36,35 +38,94 @@
   "tools": [
     {
       "name": "search_videos",
-      "description": "Search for videos using advanced AI analysis with prompt engineering, content analysis, and relevance ranking"
-    },
-    {
-      "name": "analyze_video",
-      "description": "Analyze a video's content and generate summary, extract key information"
+      "description": "AI-ranked YouTube search with year, duration and purpose filters"
     },
     {
       "name": "get_video_transcript",
-      "description": "Get the transcript for a specific video without AI analysis"
-    },
-    {
-      "name": "answer_followup_question",
-      "description": "Answer a follow-up question about a previously analyzed video"
-    },
-    {
-      "name": "get_usage",
-      "description": "Get current usage statistics including API calls, storage usage, and subscription limits"
+      "description": "Transcript of a YouTube, TikTok, X, Facebook, Vimeo, Dailymotion or Loom video"
     },
     {
       "name": "transcribe_video",
-      "description": "Transcribe non-YouTube videos (Instagram, TikTok, Facebook, etc.)"
+      "description": "Speech-to-text for videos without captions, Instagram included, of any length"
+    },
+    {
+      "name": "analyze_video",
+      "description": "Summarize a video or answer a question about it"
+    },
+    {
+      "name": "answer_followup_question",
+      "description": "Ask another question about a video you already analyzed"
+    },
+    {
+      "name": "extract_video_data",
+      "description": "Extract structured data from a video into fields you define"
+    },
+    {
+      "name": "get_tweet_statement",
+      "description": "Extract the core claim of an X/Twitter post, including its attached media"
+    },
+    {
+      "name": "search_tiktok",
+      "description": "TikTok keyword search with sort, date and popularity filters"
+    },
+    {
+      "name": "scrape_tiktok_profile",
+      "description": "Scrape the videos of a TikTok profile"
+    },
+    {
+      "name": "get_task_status",
+      "description": "Get the result of a transcription, extraction, tweet or TikTok task"
+    },
+    {
+      "name": "list_files",
+      "description": "List the files you uploaded to VidNavigator"
+    },
+    {
+      "name": "get_file",
+      "description": "Get an uploaded file's details and transcript"
+    },
+    {
+      "name": "analyze_file",
+      "description": "Summarize an uploaded file or answer a question about it"
+    },
+    {
+      "name": "search_files",
+      "description": "Semantic search across your uploaded files"
+    },
+    {
+      "name": "extract_file_data",
+      "description": "Extract structured data from an uploaded file"
+    },
+    {
+      "name": "list_namespaces",
+      "description": "List the namespaces your files are organized into"
+    },
+    {
+      "name": "get_usage",
+      "description": "Credit balance, activity, storage and channels indexed"
     }
   ],
   "tools_generated": true,
-  "keywords": ["video", "ai", "search", "analysis", "youtube", "transcription", "content", "social-media"],
+  "keywords": [
+    "video",
+    "ai",
+    "search",
+    "analysis",
+    "youtube",
+    "tiktok",
+    "instagram",
+    "transcription",
+    "data-extraction",
+    "social-media"
+  ],
   "license": "MIT",
   "compatibility": {
     "claude_desktop": ">=0.10.0",
-    "platforms": ["darwin", "win32", "linux"],
+    "platforms": [
+      "darwin",
+      "win32",
+      "linux"
+    ],
     "runtimes": {
       "node": ">=18.0.0"
     }
@@ -73,7 +134,7 @@
     "api_key": {
       "type": "string",
       "title": "VidNavigator API Key",
-      "description": "Your VidNavigator API key for authentication. Get one at https://vidnavigator.com/developer/api-keys",
+      "description": "Your VidNavigator API key. Get one at https://vidnavigator.com/studio/api",
       "sensitive": true,
       "required": true,
       "pattern": "^vna_[a-zA-Z0-9_]+$",
@@ -82,7 +143,10 @@
   },
   "permissions": {
     "network": {
-      "domains": ["api.vidnavigator.com", "vidnavigator.com"],
+      "domains": [
+        "api.vidnavigator.com",
+        "vidnavigator.com"
+      ],
       "description": "Required to access VidNavigator API services"
     }
   }

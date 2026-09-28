@@ -143,10 +143,8 @@ This builds the Claude Desktop extension and copies it to `releases/vidnavigator
 
 ### Adding New Tools
 
-1. **Update Server Implementation** (`claude-desktop/server/index.js`)
-2. **Update Manifest** (`claude-desktop/manifest.json`):
-   - Add tool to `tools` array
-   - Update `tools_generated` if needed
+1. **Add the tool to the hosted server** (`backend/protocols/mcp_server.py` in the backend repository). The Claude Desktop extension relays `tools/list` and `tools/call` to it, so it picks the tool up with no code change or new release.
+2. **Update Manifest** (`claude-desktop/manifest.json`): add the tool to the `tools` array. It is only the list shown on the extension's install page.
 3. **Update Documentation**:
    - Add to tool lists in READMEs
    - Add usage examples

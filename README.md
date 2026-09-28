@@ -1,15 +1,19 @@
 # 🎥 VidNavigator MCP Server
 
-AI-powered video search, analysis, and transcription through the Model Context Protocol (MCP). Available for both **Cursor** and **Claude Desktop**.
+AI-powered video search, transcription, analysis and data extraction through the Model Context Protocol (MCP). Available for both **Cursor** and **Claude Desktop**, and for any MCP client through the hosted server at `https://api.vidnavigator.com/mcp/`.
 
 ## 🚀 Features
 
-- 🔍 **AI Video Search**: Search for videos using natural language with advanced AI analysis and relevance ranking
-- 📽️ **Video Analysis**: Comprehensive analysis of YouTube videos with summaries, key insights, and Q&A
-- 📝 **Transcript Extraction**: Get YouTube video transcripts without analysis (fast and lightweight)
-- 🎬 **Multi-Platform Transcription**: Transcribe videos from Instagram, TikTok, Facebook, and other social platforms
-- 💬 **Follow-up Questions**: Ask specific questions about previously analyzed videos
-- 📊 **Usage Tracking**: Monitor your API usage and subscription limits
+- 🔍 **AI Video Search**: AI-ranked YouTube search with year, duration and purpose filters
+- 📝 **Transcripts and Transcription**: Transcripts from YouTube, TikTok, X, Facebook, Vimeo and more, and speech-to-text for videos without captions (Instagram included), of any length
+- 📽️ **Video Analysis**: Summaries and Q&A on any video, with follow-up questions
+- 🧩 **Data Extraction**: Structured data extracted from a video into the fields you define
+- 🐦 **Tweet Claim Analysis**: The core claim of an X/Twitter post, ready to fact-check
+- 🎵 **TikTok**: Keyword search with sort, date and popularity filters, and profile scrapes
+- 📁 **Your Files**: Search, analyze and extract data from the files you uploaded to VidNavigator
+- 📊 **Usage Tracking**: Your credit balance and activity
+
+Long-running tools (transcription, extraction, tweet analysis, TikTok) run as background jobs: the assistant gets a `task_id` and polls `get_task_status` until the result is ready.
 
 ## 📋 Quick Start
 
@@ -71,24 +75,23 @@ AI-powered video search, analysis, and transcription through the Model Context P
 - *"Summarize this YouTube video: https://youtube.com/watch?v=xyz"*
 - *"What did the speaker say about climate policy?"*
 - *"Give me the transcript for this TikTok: [link]"*
-- *"How many calls to vidnavigator have I made this month?"*
+- *"Transcribe this Instagram reel and give me the three key points: [link]"*
+- *"From this product review, extract the product, the price and the verdict: [link]"*
+- *"Find the most liked TikToks about AI tools this week"*
+- *"How many VidNavigator credits do I have left?"*
 
 ## 🔧 Available Tools
 
-- **search_videos**: Search for videos with AI analysis and ranking
-- **analyze_video**: Analyze video content and generate summaries
-- **get_video_transcript**: Extract video transcripts
-- **answer_followup_question**: Ask questions about analyzed videos
-- **get_usage**: Check API usage and subscription limits
-- **transcribe_video**: Transcribe non-YouTube videos
+The tools are served by the hosted VidNavigator MCP server, so Cursor and the Claude Desktop extension always get the same, current list. Full descriptions: [docs.vidnavigator.com/mcp-server](https://docs.vidnavigator.com/mcp-server).
 
-## 📊 API Usage
+- **Online videos**: `search_videos`, `get_video_transcript`, `transcribe_video`, `analyze_video`, `answer_followup_question`, `extract_video_data`, `get_tweet_statement`
+- **TikTok**: `search_tiktok`, `scrape_tiktok_profile`
+- **Your files**: `list_files`, `get_file`, `analyze_file`, `search_files`, `extract_file_data`, `list_namespaces`
+- **Tasks and account**: `get_task_status`, `get_usage`
 
-All tools are subject to your [VidNavigator](https://vidnavigator.com) subscription plan:
-- **Free Plan**: Limited requests per month
-- **Paid Plans**: Higher limits based on plan tier
+## 📊 Credits
 
-Use the "get_usage" tool to check your current usage and remaining limits.
+Every tool draws from your plan's shared [credit pool](https://vidnavigator.com/pricing), like the equivalent API endpoint. Polling a background job is free. Use the `get_usage` tool to check your balance.
 
 ## 🆘 Support
 

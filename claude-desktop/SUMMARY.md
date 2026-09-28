@@ -19,9 +19,9 @@ This project creates a Claude Desktop Extension (.dxt file) for VidNavigator, en
    - Tool definitions and metadata
 
 3. **MCP Server** (`server/index.js`)
-   - Node.js implementation of the VidNavigator MCP server
-   - Calls VidNavigator Developer API v1 endpoints
-   - Handles all video search, analysis, and transcription tools
+   - Stdio relay to the hosted VidNavigator MCP server (`https://api.vidnavigator.com/mcp/`)
+   - Forwards `tools/list` and `tools/call` with the user's API key
+   - Defines no tools of its own: the list always matches the hosted server
 
 4. **Build System**
    - Automated build script (`build.js`)
@@ -30,16 +30,7 @@ This project creates a Claude Desktop Extension (.dxt file) for VidNavigator, en
 
 ### 🛠️ Available Tools
 
-The extension provides these tools to Claude Desktop users:
-
-| Tool | Description | Use Case |
-|------|-------------|----------|
-| `search_videos` | AI-powered video search with ranking | Find relevant videos by description |
-| `analyze_video` | Comprehensive video analysis and Q&A | Understand video content and ask questions |
-| `get_video_transcript` | Extract YouTube video transcripts | Get raw transcript data quickly |
-| `answer_followup_question` | Ask questions about analyzed videos | Deep dive into video content |
-| `get_usage` | Check API usage and limits | Monitor subscription usage |
-| `transcribe_video` | Transcribe non-YouTube videos | Handle Instagram, TikTok, Facebook videos |
+The extension exposes whatever the hosted server offers (17 tools as of 2.0.0): video search, transcripts and transcription, analysis, data extraction, tweet claim analysis, TikTok search and profile scrapes, uploaded files, task status and usage. See [docs.vidnavigator.com/mcp-server](https://docs.vidnavigator.com/mcp-server) for the full list.
 
 ### 📁 File Structure
 
